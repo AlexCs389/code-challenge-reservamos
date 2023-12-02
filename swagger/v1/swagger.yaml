@@ -1,0 +1,77 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/forecasts":
+    get:
+      summary: Get forecasts by city
+      tags:
+      - Forecasts
+      parameters:
+      - name: city_name
+        in: query
+        required: true
+        description: City name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully obtained forecasts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    lat:
+                      type: string
+                      example: '20.9673702'
+                    long:
+                      type: string
+                      example: "-89.5925857"
+                    city_name:
+                      type: string
+                      example: Mérida
+                    forecasts:
+                      type: object
+                      properties:
+                        datetime:
+                          type: string
+                          format: date-time
+                          example: '2023-12-01T11:00:00.000-06:00'
+                        temp_min:
+                          type: number
+                          multipleOf: 0.1
+                          example: 22.06
+                        temp_max:
+                          type: number
+                          multipleOf: 0.1
+                          example: 34.6
+        '422':
+          description: Forecasts could not be obtained
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  error_message:
+                    type: string
+        '500':
+          description: An unexpected error occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_message:
+                    type: string
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
