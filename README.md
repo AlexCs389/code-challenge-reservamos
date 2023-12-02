@@ -1,24 +1,35 @@
-# README
+# Code challenge - Reservamos
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este repositorio tiene como objetivo presentar una prueba técnica de codificación para el proceso de entrevista de un 
+puesto de desarrollador RoR en Reservamos.
 
-Things you may want to cover:
+## Descripción del Proyecto
 
-* Ruby version
+Se ha desarrollado una API que consume la API de Reservamos para obtener información sobre lugares mediante su nombre. Además, se utiliza 
+la API de OpenWeather para obtener pronósticos del clima para los próximos 7 días.
 
-* System dependencies
+### Tecnologías Utilizadas
 
-* Configuration
+El proyecto se desarrolló utilizando las siguientes tecnologías:
 
-* Database creation
+- Ruby: 2.7.7
+- Rails: 5.2.8.1
+- SQLite
 
-* Database initialization
+### Configuración del Proyecto
 
-* How to run the test suite
+Para ejecutar este proyecto, es necesario crear el archivo `master.key` en el directorio `config`. El contenido de este archivo debe ser el siguiente:
 
-* Services (job queues, cache servers, search engines, etc.)
+```plaintext
+c3bd5cc65db0f08c5453697d429ede89
+```
 
-* Deployment instructions
+### Instrucciones de Ejecución
 
-* ...
+Posteriormente, puedes ejecutar el proyecto. En este ejemplo, se utiliza RVM para gestionar las versiones de Ruby:
+
+```
+cd code-challenge-reservamos/
+rvm use 2.7.7
+rails s
+```
